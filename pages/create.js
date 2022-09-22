@@ -26,7 +26,8 @@ export default function Home() {
     setLoading(false);
     
     if(!response.ok) {
-      alert('Failed')
+      let error = await response.json()
+      alert(`Failed ${error.Message}`)
       return
     }
     const data = await response.json()
