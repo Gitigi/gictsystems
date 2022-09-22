@@ -1,9 +1,8 @@
 import Link from "next/link"
 import { useRouter } from "next/router"
 
-export default function Header() {
+export default function Header({ active }) {
   const router = useRouter();
-  console.log(router.asPath)
 
   return (
     <>
@@ -18,13 +17,13 @@ export default function Header() {
                 </Link>
 
                 <Link href="/create">
-                    <a className={`py-4 px-8 font-semibold ${ router.asPath === '/create' ? 'text-gray-700 bg-blue-300' : ''}`}>
+                    <a className={`py-4 px-8 font-semibold ${ active === 'create' ? 'text-gray-700 bg-blue-300' : ''}`}>
                     Create
                     </a> 
                 </Link>
                     
                 <Link href="/list">
-                    <a className={`py-4 px-8 font-semibold ${ router.asPath === '/list' ? 'text-gray-700 bg-blue-300' : ''}`}>
+                    <a className={`py-4 px-8 font-semibold ${ active === 'list' ? 'text-gray-700 bg-blue-300' : ''}`}>
                     List
                     </a> 
                 </Link>
