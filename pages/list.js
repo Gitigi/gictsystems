@@ -5,19 +5,16 @@ export default function Items() {
   const [ items, setItems ] = useState([])
 
   useEffect(() => {
-    const controller = new AbortController();
-    const signal = controller.signal
+    let mounted = true
 
     fetch('/api/items').then( async (response) => {
-      setItems(await response.json());
+      if(mounted) setItems(await response.json());
     }).catch(e => {
       if( e.name == 'AbortError') {}
       throw e;
     })
 
-    return () => {
-      controller.abort()
-    }
+    return () => (mounted = false)
   }, [])
   
   return (
