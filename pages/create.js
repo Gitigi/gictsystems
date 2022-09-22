@@ -17,25 +17,18 @@ export default function Home() {
     const options = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ALDJAK23423JKSLAJAF23423J23SAD3'
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(info)
     }
+    const response = await fetch('/api/submit', options)
 
-    try{
-      const response = await fetch('http://developers.gictsystems.com/api/dummy/submit/', options)
-    } catch(e) {
-      alert('failed')
-      setLoading(false)
-      return
-    }
     setLoading(false);
     
     if(!response.ok) {
       alert('Failed')
+      return
     }
-
     const data = await response.json()
     alert('Successfull')
   }
