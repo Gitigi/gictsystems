@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
-import Header from "../components/header"
+import Layout from "../components/layout";
+
 export default function Items() {
   const [ items, setItems ] = useState([])
 
@@ -20,8 +21,7 @@ export default function Items() {
   }, [])
   
   return (
-    <>
-      <Header active='list' />
+    <Layout active='list'>
       <div className="container mx-auto flex flex-col items-center">
         <h2 className="px-2 py-4 text-2xl font-bold uppercase text-gray-700">Items</h2>
         <ul className="w-full md:w-1/2 divide-y">
@@ -31,6 +31,6 @@ export default function Items() {
           </li>)}
         </ul>
       </div>
-    </>
+    </Layout>
   )
 }
